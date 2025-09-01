@@ -274,6 +274,8 @@ if (savedLang) {
     document.getElementById("current-flag").className =
         savedLang === "sr" ? "fi fi-rs" : "fi fi-us";
     applyI18n(savedLang);
+} else {
+    applyI18n("en");
 }
 
 // Theme Toggle
@@ -313,3 +315,4 @@ function updateThemeIcon(theme) {
     icon.classList.remove("rotate");
   });
 }
+
