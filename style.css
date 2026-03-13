@@ -20,11 +20,76 @@ body { line-height: 1.6; }
     object-position: 50% 1%;
 }
 
+@page {
+    size: A4;
+    margin: 1.5cm;
+}
+
 @media print {
     .no-print { display: none !important; }
-    a[href]::after { content: " (" attr(href) ")"; font-size: .8em; }
-    .container { max-width: 100% !important; }
-    .card { box-shadow: none !important; }
+
+    body { font-size: 10pt; }
+
+    .container { max-width: 100% !important; padding: 0 !important; }
+    .py-4 { padding-top: 0 !important; padding-bottom: 0 !important; }
+
+    /* Force two-column layout regardless of viewport */
+    .row.g-4 {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        gap: 0.75rem !important;
+        --bs-gutter-x: 0 !important;
+    }
+    .col-lg-4 { flex: 0 0 31% !important; width: 31% !important; max-width: 31% !important; }
+    .col-lg-8 { flex: 0 0 67% !important; width: 67% !important; max-width: 67% !important; }
+
+    /* Cards */
+    .card {
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+        border-radius: 4px !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+        margin-bottom: 0.5rem !important;
+    }
+    .card.h-100 { height: auto !important; }
+    .card-body { padding: 0.6rem 0.75rem !important; }
+
+    /* Links */
+    a[href]::after { content: none !important; }
+    a { color: #000 !important; text-decoration: none !important; }
+
+    /* Badges - outlined instead of filled */
+    .badge {
+        background: transparent !important;
+        color: #333 !important;
+        border: 1px solid #555 !important;
+        font-size: 7.5pt !important;
+        font-weight: normal !important;
+        padding: 1px 5px !important;
+    }
+
+    /* Section titles */
+    .section-title {
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 3px;
+        margin-bottom: 8px !important;
+    }
+
+    /* Avatar */
+    .avatar-wrapper { width: 90px !important; height: 90px !important; }
+
+    /* Typography */
+    h2 { font-size: 14pt !important; }
+    .h5 { font-size: 11pt !important; }
+    .h6 { font-size: 9pt !important; }
+    .lead { font-size: 10pt !important; }
+    .small, small { font-size: 8.5pt !important; }
+
+    header { margin-bottom: 0.5rem !important; }
+    .mb-4 { margin-bottom: 0.4rem !important; }
+
+    .text-secondary { color: #555 !important; }
 }
 
 .rotate {

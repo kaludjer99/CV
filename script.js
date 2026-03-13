@@ -316,3 +316,13 @@ function updateThemeIcon(theme) {
   });
 }
 
+// Print: always print in light theme, restore after
+window.addEventListener('beforeprint', () => {
+  root.setAttribute('data-bs-theme', 'light');
+});
+window.addEventListener('afterprint', () => {
+  const theme = localStorage.getItem('theme') || 'light';
+  root.setAttribute('data-bs-theme', theme);
+  updateThemeIcon(theme);
+});
+
